@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">  
+</head>
+<body class="dashboard-body">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div style="color: red; font-weight: bold;">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+    <h2 class="welcome-message">Welcome, {{ username }}!</h2>
+    <form method="get" action="{{ url_for('dashboard') }}" class="search-form">
+        <input type="text" name="query" class="search-input">
+        <input type="submit" value="Search" class="search-submit">
+    </form>
+    <div class="navigation-buttons">
+        <button onclick="window.location.href='employee_projects'" class="nav-button">Go to Projects</button>
+    </div>
+    <h3 class="project-header">Your Projects:</h3>
+    <div class="scrollable-div">
+        <table class="project-table">
+            <tr class="table-header-row">
+                <th class="table-header">Project Name</th>
+                <th class="table-header">Project Description</th>
+                <th class="table-header">Report</th>
+                <th class="table-header">Admin Remark</th>
+                <th class="table-header">Admin Name</th>
+                <th class="table-header">Timestamp</th>
+            </tr>
+            {% for project in projects %}
+                {% for report in project.reports %}
+                <tr class="project-row">
+                    <td class="table-data">{{ project.name }}</td>
+                    <td class="table-data">{{ project.description }}</td>
+                    <td class="table-data">{{ report.report_text }}</td>
+                    <td class="table-data">{% if report.admin_remark %}{{ report.admin_remark }}{% else %}No remark{% endif %}</td>
+                    <td class="table-data">{{ report.admin_username }}</td>
+                    <td class="table-data">{{ report.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    </div>
+    <form method="post" action="{{ url_for('submit_report') }}">
+        <div class="form-element">
+            <label for="report_text">Submit Weekly Work Report:</label>
+            <textarea rows="10" cols="50" id="report_text" name="report_text" required class="report-textarea"></textarea>
+        </div>
+        <label for="project_id">Select Project:</label>
+        <select id="project_id" name="project_id" required class="project-select">
+            {% for project in projects %}
+            <option value="{{ project.id }}">{{ project.name }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Submit" class="submit-button">
+    </form>
+    <div class="top-right">
+        <a href="{{ url_for('change_password') }}" class="change-password-link">Change Password</a>
+        <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>

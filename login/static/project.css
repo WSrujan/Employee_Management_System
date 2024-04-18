@@ -1,0 +1,73 @@
+body.admin-dashboard-body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+}
+
+h3.section-header {
+    font-size: 1.5em;
+    color: #4caf50; /* Green */
+    margin-top: 20px;
+}
+
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.projects-table .table-header-row {
+    background-color: white;
+    color: #666;
+}
+
+.projects-table .table-data-row:nth-child(even) {
+    background-color: white; /* Light Green */
+}
+
+.projects-table .table-data-row:nth-child(odd) {
+    background-color: #a5d6a7; /* Green */
+}
+
+.projects-table .table-data,
+.projects-table .table-header {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.form-label,
+.form-input,
+.form-textarea,
+.form-select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.submit-button,
+.delete-button,
+.btn {
+    background-color: #4caf50; /* Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.submit-button:hover,
+.delete-button:hover,
+.btn:hover {
+    background-color: #45a049; /* Dark Green */
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.flex-item {
+    width: 45%; /* Adjust this value as needed */
+}

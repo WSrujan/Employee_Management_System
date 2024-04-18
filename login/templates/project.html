@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">                     
+</head>
+<body class="admin-dashboard-body">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div style="color: red; font-weight: bold;">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <h3 id="projects" class="section-header">Projects:</h3>
+    <table class="projects-table">
+        <tr class="table-header-row">
+            <th class="table-header">Project ID</th>
+            <th class="table-header">Project Name</th>
+            <th class="table-header">Project Description</th>
+            <th class="table-header">Members</th>
+            <th class="table-header">Start_Date</th>
+            <th class="table-header">End Date</th>
+            <th class="table-header">Actions</th>
+        </tr>
+        {% for project in projects %}
+            <tr class="table-data-row">
+                <td class="table-data">{{ project.id }}</td>
+                <td class="table-data">{{ project.name }}</td>
+                <td class="table-data">{{ project.description }}</td>
+                <td class="table-data">{{ ', '.join(project.members) }}</td>
+                <td class="table-data">{{ project.start_date }}</td>
+                <td class="table-data">{{ project.end_date }}</td>
+                <td class="table-data">
+                    <!-- Delete Project Form -->
+                    <form action="{{ url_for('delete_project') }}" method="post" class="delete-project-form">
+                        <input type="hidden" name="project_id" value="{{ project.id }}">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="flex-container">
+    <div class="flex-item">
+    <h3 id="add_project" class="section-header">Add New Project:</h3>
+    <form action="{{ url_for('add_project') }}" method="post" class="add-project-form">
+        <label for="name" class="form-label">Project Name:</label><br>
+        <input type="text" id="name" name="name" required class="form-input"><br>
+        <label for="description" class="form-label">Project Description:</label><br>
+        <textarea id="description" name="description" required class="form-textarea"></textarea><br>
+        <label for="end_date" class="form-label">End Date:</label><br>
+        <input type="date" id="end_date" name="end_date" required class="form-input"><br>
+        <button type="submit" class="submit-button">Add Project</button>
+    </form>
+    </div>
+    <div class="flex-item">
+    <h3 id="manage" class="section-header">Manage User Assignments:</h3>
+    <form action="{{ url_for('manage_user_assignment') }}" method="post" class="manage-assignments-form">
+        <label for="user_id" class="form-label">User ID:</label><br>
+        <input type="text" id="user_id" name="user_id" class="form-input"><br>
+        <label for="project_id" class="form-label">Project ID:</label><br>
+        <input type="text" id="project_id" name="project_id" class="form-input"><br>
+        <label for="operation" class="form-label">Operation:</label><br>
+        <select id="operation" name="operation" class="form-select">
+            <option value="add">Add User to Project</option>
+            <option value="remove">Remove User from Project</option>
+        </select><br>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+    </div>
+    </div>
+    <br>
+    <a href="{{ url_for('admin_review') }}" class="btn admin-review-link">Go to Admin Dashboard</a>
+</body>
+</html>

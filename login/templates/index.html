@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Index </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">                     
+</head>
+<body style="background-color: #f0f0f0;">
+    <div class="center-div">
+      <div style="border: 1px solid black; padding: 10px;">
+         <div class="header">
+            <h1 style="font-size: 2em; color: #333;">Index</h1>
+         </div>
+        <h1 style="font-size: 1.5em; color: #666;">
+             Hi {{session.username}}!!</br></br> Welcome to the index page. <br> Click Dashboard button to vist Dashboard.                
+        </h1>
+        <a href="{{ url_for('dashboard') }}" class="dashboard-link">Go to Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+      </div>
+    </div>
+</body>
+</html>

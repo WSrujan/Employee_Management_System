@@ -1,0 +1,26 @@
+Fix project name searching feature that show employee details.					DONE
+added pop up for actions as sending reports, remarks, projects changes.				DONE
+added new admin acc with from admin dashboard also changed way admin acc is verified		DONE
+redirected admin to straight admin dashboard							DONE
+navigation around page in admin dashboard							DONE
+added delete project in add new project ui							DONE
+add timestamps for reports									DONE
+add scroll bar to the report / remark table							DONE
+show which admin added remark in admin dashboard also in dashboard				DONE
+Added Project name in reports in admin_dashboard						DONE
+Fixed Remark Button and Remark saving route 							DONE
+Added Project Description in dashboard and admin_dashboard 					DONE
+Change password for admin and Employee								DONE
+Added CSS to site to make it look better							KindOf
+Add nav to change password									DONE
+Admin should only see reports and nav buttons to other pages					DONE
+fix search to show reports,projects,project description and ability to add remark		DONE
+new reports at top of table									DONE
+nav for employee dashboard									DONE
+Tables for employee dashboard									DONE
+Search by project name or project id on employee dashboard					DONE
+move change password and Logout to top right corner						DONE
+change report format instead of single text area
+Added start date and end date									DONE
+Make add new project and Manage user assignments side by side
+make css constant theme

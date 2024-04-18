@@ -1,0 +1,42 @@
+body.projects-body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+}
+
+h2.section-header {
+    font-size: 2em;
+    color: #333;
+    margin-top: 20px;
+}
+
+div.project {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+table.project-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr.table-header-row {
+    background-color: #f2f2f2;
+}
+
+th.table-header, td.table-data {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+a.btn.dashboard-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+}

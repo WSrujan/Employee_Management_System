@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='employee_projects.css') }}">                     
+</head>
+<body class="projects-body">
+    <h2 id="projects" class="section-header">Projects</h2>
+
+    {% for project in projects %}
+    <div class="project">
+        <table class="project-table">
+            <tr class="table-header-row">
+                <th class="table-header">Project ID</th>
+                <th class="table-header">Project Name</th>
+                <th class="table-header">Project Description</th>
+                <th class="table-header">Members</th>
+                <th class="table-header">Start Date</th>
+                <th class="table-header">End Date</th>
+            </tr>
+            <tr class="table-data-row">
+                <td class="table-data">{{ project.id }}</td>
+                <td class="table-data">{{ project.name }}</td>
+                <td class="table-data">{{ project.description }}</td>
+                <td class="table-data">{{ project.members }}</td>
+                <td class="table-data">{{ project.start_date }}</td>
+                <td class="table-data">{{ project.end_date }}</td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+
+    <a href="{{ url_for('dashboard') }}" class="btn dashboard-link">Go to Dashboard</a>
+</body>
+</html>

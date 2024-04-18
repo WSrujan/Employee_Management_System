@@ -1,0 +1,24 @@
+Harsh:
+Create Index, login, register, dashboard, admin_dashboard, admin_search templates.
+use session to authorize user and admin.
+link application to database
+redirected admin to straight admin dashboard
+display members of projects user is in.
+display reports and admin remarks to project members in dashboard in the form of table.
+Display all reports and admin remark in admin dasshboard in form of table.
+add feature of adding and deleting projects and as well of manage user Assignments to the project.
+added search bar in admin_dashboard to search project  and users.
+add scroll bar to the report / remark table
+add timestamps.
+added pop up for actions as sending reports, remarks, projects changes
+added method to add multiple admin from admin_dashboard.
+added navigation button to move around admin_dashboard page.
+added CSS to the application.
+
+(myself) Srujan:
+merged adding and deleting project in one section.
+merged user assignment to project in one section.
+added change password.
+added forgot my password which should send email to user email id.
+shipped important settings to .env file
+added timestamp to user dashboard for reports and admin name who gave remark to user.

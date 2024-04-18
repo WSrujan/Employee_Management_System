@@ -1,0 +1,17 @@
+# .gitignore
+
+# Ignore Python virtual environments
+venv/
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore .DS_Store files (for macOS users)
+.DS_Store
+
+# Ignore files related to PyCharm IDE
+.idea/
+
+# Ignore files related to VS Code IDE
+.vscode/
+login/.env

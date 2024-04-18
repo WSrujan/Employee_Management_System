@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">  
+</head>
+<body class="admin-dashboard">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div style="color: red; font-weight: bold;">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+    <h2 style="font-size: 2em; color: #333; margin-top: 20px;">Welcome, {{ username }}!</h2>
+
+    <form method="get" action="{{ url_for('admin_review') }}" class="search-form">
+        <input type="text" name="query" class="search-input">
+        <input type="submit" value="Search" class="search-submit">
+    </form>
+<div class="navigation-buttons">
+    <button onclick="window.location.href='/projects'" class="nav-button">Go to Projects</button>
+    <button onclick="location.href='/new_admin'" class="nav-button">Go to Add New Admin</button>
+</div>
+
+    <h3 id="reports" class="section-header">Reports:</h3>
+<form action="{{ url_for('add_remarks') }}" method="post" class="reports-form">
+    <div class="scrollable-div">
+        <table class="data-table">
+            <tr class="table-header-row">
+                <th class="table-header">Employee ID</th>
+                <th class="table-header">Employee Name</th>
+                <th class="table-header">Employee Report</th>
+                <th class="table-header">Admin Remark</th>
+                <th class="table-header">Admin Name</th>
+                <th class="table-header">Timestamp</th>
+                <th class="table-header">Project Name</th>
+            </tr>
+            {% for report in reports %}
+                <tr class="table-data-row">
+                    <td class="table-data">{{ report.id }}</td>
+                    <td class="table-data">{{ report.username }}</td>
+                    <td class="table-data">{{ report.report_text }}</td>
+                    <td class="table-data">
+                        <input type="hidden" name="report_id" value="{{ report.report_id }}">
+                        <textarea name="admin_remark_{{ report.report_id }}" class="admin-remark">{{ report.admin_remark }}</textarea>
+                    </td>
+                    <td class="table-data">{{ report.admin_username }}</td>
+                    <td class="table-data">{{ report.timestamp }}</td> <!-- Display the timestamp -->
+                    <td class="table-data">{{ report.name }}</td> <!-- Display the project name -->
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <button type="submit" class="submit-button">Submit Remarks</button> <!-- Button outside the scrollable area -->
+</form>
+
+<div class="top-right">
+    <a href="{{ url_for('change_password') }}" class="change-password-link">Change Password</a>
+    <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+</div>
+</body>
+</html>
